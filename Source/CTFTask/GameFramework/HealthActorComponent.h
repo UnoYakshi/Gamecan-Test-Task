@@ -4,12 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "Components/TextRenderComponent.h"
 #include "HealthActorComponent.generated.h"
 
 
-/** Adding an ability to assign delegates that will be called
-*  when the owner of the component is dead */
+/** Adding an ability to assign delegates that will be called when the component's owner is dead... */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDeathSignature, AActor*, DeadActor);
 
 
@@ -51,7 +49,6 @@ protected:
 	
 
 public:
-    /** Called when Health is <= 0.. */
     UPROPERTY(BlueprintAssignable, Category = "Game|Health")
     FDeathSignature OnDeath;
 
@@ -70,6 +67,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Game|Health")
     void IncreaseHealthValue(const float IncreaseValue);
 
+    /** Called when Health is <= 0.. */
 	UFUNCTION(BlueprintCallable)
     void Die();
 
