@@ -117,13 +117,12 @@ void UHealthActorComponent::Die()
 			break;
 		}
 	}
+	
 	APlayerController* PC = Cast<APlayerController>(Owner->GetController());
 	if (PC)
 	{
 		Owner->DisableInput(PC);
 	}
-
-	// TODO: OnDeath() here...
 }
 
 void UHealthActorComponent::BringToLife(float NewHealthValue)
@@ -149,10 +148,5 @@ void UHealthActorComponent::OnRep_IsDead()
 	if (bIsDead)
 	{
 		Die();
-		// TODO: Call GetOwner()->OnDeath() or something...
-	}
-	else
-	{
-		// Resurrect();
 	}
 }
